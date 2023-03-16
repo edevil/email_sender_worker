@@ -1,0 +1,3 @@
+name = "email_sender_worker"
+main = "src/index.js"
+compatibility_date = "2023-03-16"
