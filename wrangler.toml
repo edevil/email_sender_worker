@@ -2,6 +2,8 @@ name = "email_sender_worker"
 main = "src/index.js"
 compatibility_date = "2023-03-16"
 
-[[unsafe.bindings]]
-type = "send_email"
-name = "SEB"
+send_email = [
+    {type = "send_email", name = "SEB_TARGET", destination_address = "teste@cabine.org"},
+    {type = "send_email", name = "SEB"},
+    {type = "send_email", name = "SEB_ALLOWLIST", allowed_destination_addresses = ["teste@cabine.org", "teste2@cabine.org"]},
+]

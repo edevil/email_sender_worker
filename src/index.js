@@ -1,16 +1,6 @@
 import { EmailMessage } from "cloudflare:email";
 import { createMimeMessage } from "mimetext";
 
-function toReadableStream(value) {
-  return new ReadableStream({
-    start(controller) {
-      var enc = new TextEncoder();
-      controller.enqueue(enc.encode(value));
-      controller.close();
-    },
-  });
-}
-
 export default {
   async fetch(request, env) {
     const msg = createMimeMessage();
@@ -27,7 +17,7 @@ good bye.`
     var message = new EmailMessage(
       "something@email.speedcf.com",
       "teste@cabine.org",
-      toReadableStream(msg.asRaw())
+      msg.asRaw()
     );
     try {
       await env.SEB.send(message);
